@@ -5,6 +5,20 @@ Created on Sat Mar 25 00:10:36 2023
 @author: DELL
 """
 
+
+import os
+from tensorflow.keras.models import load_model
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model = load_model(os.path.join(BASE_DIR, "swin_transformer.h5"))
+
+import os
+from flask import Flask, render_template, request
+from tensorflow.keras.models import load_model
+# ...other imports (numpy, PIL, etc.) stay as they were
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model = load_model(os.path.join(BASE_DIR, "swin_transformer.h5"))
+
 from flask import Flask, render_template, request
 from tensorflow.keras.models import load_model
 import numpy as np
@@ -14,7 +28,7 @@ app = Flask(__name__)
 
 dic = {0 : 'bacterial_blight', 1 : 'curl_virus', 2 : 'fussarium_wilt',3 : 'healthy'}
 
-model = load_model("D:\Projects\Cotton Plant Disease Project\webapp\swin_transformer.h5")
+model = load_model("C:\\Users\\DIVYANSH DWIVEDI\\Documents\\cotton_crop_disease_detection_using_SWIN_transformers\\webapp\\model.h5")
 
 model.make_predict_function()
 
